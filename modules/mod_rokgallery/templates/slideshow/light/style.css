@@ -1,0 +1,17 @@
+/**
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+.rg-ss-info {color: #fff;text-shadow: 1px 1px 4px rgba(0,0,0,0.5);}
+.rg-ss-navigation-container {background: #eee;}
+.rg-ss-thumb {border: 2px solid #fff;box-shadow: 0 0 5px rgba(0,0,0,0.6);-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);-moz-box-shadow: 0 0 5px rgba(0,0,0,0.6);}
+.rg-ss-thumb.active {border-color: #333;}
+.rg-ss-arrow-left {background: #eee url(images/divider.png) 100% 0 repeat-y;}
+.rg-ss-arrow-right {background: #eee url(images/divider.png) 0 0 repeat-y;}
+.rg-ss-arrow-left:hover, .rg-ss-arrow-right:hover {background-color: #ddd;}
+.rg-ss-arrow-left span, .rg-ss-arrow-right span {background-image: url(images/slideshow-arrows.png);}
+.rg-ss-controls .next, .rg-ss-controls .prev {background-color: #fff;background-image: url(images/slideshow-arrows.png);}
+.rg-ss-controls .next:hover, .rg-ss-controls .prev:hover {background-color: #ddd;}
+.rg-ss-loader {background: #000;border-top: 1px solid rgba(255,255,255,0.6);border-bottom: 1px solid rgba(255,255,255,0.6);}
+.rg-ss-progress {background: #fff;}

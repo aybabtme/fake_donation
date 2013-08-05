@@ -1,0 +1,444 @@
+<!doctype html>
+<html xml:lang="fr-fr" lang="fr-fr" >
+<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	      <base href="" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="Joomla! - Open Source Content Management" />
+  <title>Aidons Denis Poitras</title>
+  <link href="http://aidonsdenispoitras.com/index.php?format=feed&amp;type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+  <link href="http://aidonsdenispoitras.com/index.php?format=feed&amp;type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0" />
+  <link rel="stylesheet" href="plugins/editors/jckeditor/typography/typography2.php" type="text/css" />
+  <link rel="stylesheet" href="plugins/system/rokbox/themes/light/rokbox-style.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/css-compiled/menu-702cb8d6b3129d7ba782074cc09075f8.css" type="text/css" />
+  <link rel="stylesheet" href="libraries/gantry/css/grid-responsive.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/css/grid-responsive.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/css-compiled/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/css-compiled/master-1c2ec7363b82a5eae3c27c587652af4e.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/css-compiled/mediaqueries.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/css-compiled/thirdparty-k2.css" type="text/css" />
+  <link rel="stylesheet" href="templates/rt_cerulean/overrides/mod_rokgallery/templates/slideshow/slideshow.css" type="text/css" />
+  <link rel="stylesheet" href="modules/mod_rokgallery/templates/slideshow/light/style.css" type="text/css" />
+  <style type="text/css">
+a, ul.menu li .separator {color:;}
+  </style>
+  <script src="media/system/js/mootools-core.js" type="text/javascript"></script>
+  <script src="media/system/js/core.js" type="text/javascript"></script>
+  <script src="media/system/js/caption.js" type="text/javascript"></script>
+  <script src="media/system/js/mootools-more.js" type="text/javascript"></script>
+  <script src="plugins/system/rokbox/rokbox.js" type="text/javascript"></script>
+  <script src="plugins/system/rokbox/themes/light/rokbox-config.js" type="text/javascript"></script>
+  <script src="libraries/gantry/js/gantry-totop.js" type="text/javascript"></script>
+  <script src="libraries/gantry/js/browser-engines.js" type="text/javascript"></script>
+  <script src="templates/rt_cerulean/js/rokmediaqueries.js" type="text/javascript"></script>
+  <script src="modules/mod_roknavmenu/themes/default/js/rokmediaqueries.js" type="text/javascript"></script>
+  <script src="templates/rt_cerulean/html/mod_roknavmenu/themes/default/js/responsive.js" type="text/javascript"></script>
+  <script src="modules/mod_rokgallery/templates/slideshow/joomla/2.5/slideshow.js" type="text/javascript"></script>
+  <script src="components/com_rokgallery/assets/js/moofx.js" type="text/javascript"></script>
+  <script src="components/com_rokgallery/assets/js/rokmediaqueries.js" type="text/javascript"></script>
+  <script src="components/com_rokgallery/assets/js/mootools-mobile.js" type="text/javascript"></script>
+  <script type="text/javascript">
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});
+window.addEvent('domready', function() {
+			$$('.hasTip').each(function(el) {
+				var title = el.get('title');
+				if (title) {
+					var parts = title.split('::', 2);
+					el.store('tip:title', parts[0]);
+					el.store('tip:text', parts[1]);
+				}
+			});
+			var JTooltips = new Tips($$('.hasTip'), { maxTitleChars: 50, fixed: false});
+		});
+var rokboxPath = '/plugins/system/rokbox/';
+
+
+var rokgallery_slideshow;
+window.addEvent('domready', function(){
+	rokgallery_slideshow = new RokGallery.Slideshow('rg-177', {
+		onJump: function(index, bypass){
+			if (!this.slideshowSpacer) this.slideshowSpacer = document.id('slideshow-spacer');
+			this.animation.index = this.current;
+			this.animation.setBackground(this.slices[index].getElement('img').get('src'));
+			this.animation.setAnimation(this.options.animation);
+
+			if (!bypass){
+				this.animation.play();
+
+				if (this.captions.length){
+					if (this.current == index){
+						this.captions[index].fade('in');
+					} else {
+						this.captions[this.current].fade('out');
+						this.captions[index].fade('in');
+					}
+				}
+			}
+
+			if (this.slideshowSpacer){
+				var height;
+				this.slideshowSpacer.set('tween', {duration: 300, link: 'cancel'});
+				height = this.container.offsetHeight - 120;
+				this.slideshowSpacer.tween('height', height);
+			}
+		},
+		animation: 'random',
+		duration: 500,
+		autoplay: {
+			enabled: 0,
+			delay: 7000
+		}
+	});
+	try {
+		RokMediaQueries.on('every', function(query){
+			rokgallery_slideshow.jump(rokgallery_slideshow.current, true);
+		});
+	} catch(error) { if (typeof console != 'undefined') console.error('RokGallery [slideshow] Error while trying to add a RokMediaQuery "match" event', error); }
+
+	//rokgallery_slideshow.jump.delay(1, rokgallery_slideshow, 0, true);
+});
+window.addEvent('load', function(){
+	rokgallery_slideshow.jump(0, true);
+});
+function keepAlive() {	var myAjax = new Request({method: "get", url: "index.php"}).send();} window.addEvent("domready", function(){ keepAlive.periodical(840000); });
+  </script>
+</head>
+<body  class="logo-type-cerulean main-bg-pink main-accent2-orangecolor font-family-cerulean font-size-is-default menu-type-dropdownmenu layout-mode-responsive col12 option-com-content menu-accueil -dec12-home">
+	<div class="rt-bg"><div class="rt-bg2">
+		<div class="rt-top-section rt-dark">
+			<div class="rt-container">
+			    			    <header id="rt-top-surround">
+										<div id="rt-top" >
+						<div class="rt-container">
+							<div class="rt-grid-12 rt-alpha rt-omega">
+               <div class="rt-block horizontal-login nomargintop">
+           		<div class="module-surround">
+	           			            <div class="module-content">
+		                <form action="http://aidonsdenispoitras.com/index.php" method="post" id="login-form" >
+		<fieldset class="userdata">
+	<p id="form-login-username">
+		<input id="modlgn-username" type="text" name="username" class="inputbox" alt="username" size="18" value="Identifiant" onfocus="if (this.value=='Identifiant') this.value=''" onblur="if(this.value=='') { this.value='Username'; return false; }" />
+	</p>
+	<p id="form-login-password">
+		<input id="modlgn-passwd" type="password" name="password" class="inputbox" size="18" alt="password" value="Mot de passe" onfocus="if (this.value=='Mot de passe') this.value=''" onblur="if(this.value=='') { this.value='Password'; return false; }" />
+	</p>
+		<p id="form-login-remember">
+		<label for="modlgn-remember">Se souvenir de moi</label>
+		<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/>
+	</p>
+		<input type="submit" name="Submit" class="button" value="Connexion" />
+	<input type="hidden" name="option" value="com_users" />
+	<input type="hidden" name="task" value="user.login" />
+	<input type="hidden" name="return" value="aW5kZXgucGhwP0l0ZW1pZD0xMDE=" />
+	<input type="hidden" name="e59520a3692c722889e4a1ec34ad5629" value="1" />	</fieldset>
+	<ul>
+		<li>
+			<a href="http://aidonsdenispoitras.com/index.php/component/users/?view=reset">
+			Mot de passe oublié ?</a>
+		</li>
+		<li>
+			<a href="http://aidonsdenispoitras.com/index.php/component/users/?view=remind">
+			Identifiant oublié ?</a>
+		</li>
+				<li>
+			<a href="http://aidonsdenispoitras.com/index.php/component/users/?view=registration">
+				Créer un compte</a>
+		</li>
+			</ul>
+	</form>
+		            </div>
+                </div>
+                           </div>
+
+</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+															<div id="rt-bg-image">
+					</div>
+															<div id="rt-slideshow" >
+														<div id="rg-177" class="rokgallery-wrapper">
+	<div class="rg-ss-container">
+		<div class="rg-ss-slice-container" style="max-width: 1240px;">
+			<ul class="rg-ss-slice-list">
+	            				<li>
+		            <div class="rg-ss-slice">
+		            			            		<img title="" alt="Aidons Denis Poitras" src="media/rokgallery/b/bde3f4b9-02cd-4d3b-e028-494a4f058ce9/ad78babc-154d-44e9-9088-094e15e02157.jpg" style="max-width: 100%;height: auto;"/>
+		                		            </div>
+		            		            <div class="rg-ss-info">
+		                		                	<span class="rg-ss-title">Aidons Denis Poitras</span>
+		                		                		            		<span class="rg-ss-caption">Aidons Denis Poitras à retrouver son droit de pratique.</span>
+		            			            </div>
+		            	            </li>
+					        				</ul>
+						<div class="rg-ss-controls ">
+				<span class="next icon-chevron-right"></span>
+				<span class="prev icon-chevron-left"></span>
+			</div>
+								</div>
+			</div>
+</div>
+
+						<div class="clear"></div>
+					</div>
+															<div id="rt-header">
+						<div class="rt-container">
+							<div class="rt-grid-12 rt-alpha rt-omega">
+    	<div class="rt-block menu-block">
+		<ul class="gf-menu l1 " >
+                    <li class="item101 active last" >
+
+            <a class="item" href="index.html"  >
+                <span>
+                                        Accueil                                    </span>
+            </a>
+
+
+                    </li>
+                            <li class="item102" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/a-propos"  >
+                <span>
+                                        La campagne                                    </span>
+            </a>
+
+
+                    </li>
+                            <li class="item108" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/donnez"  >
+                <span>
+                                        Donnez                                    </span>
+            </a>
+
+
+                    </li>
+                            <li class="item144 parent" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/appuyer"  >
+                <span>
+                                        Appuyez                                        <span class="border-fixer"></span>
+                                    </span>
+            </a>
+
+
+
+                                    <div class="dropdown columns-1 " style="width:180px;">
+                                                <div class="column col1"  style="width:180px;">
+                            <ul class="l2">
+                                                                                                                    <li class="item145" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/appuyer/petition"  >
+                <span>
+                                        Pétition                                    </span>
+            </a>
+
+
+                    </li>
+                                                                                                                                                                <li class="item147" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/appuyer/appuyez"  >
+                <span>
+                                        Appuyez                                    </span>
+            </a>
+
+
+                    </li>
+                                                                                                        </ul>
+                        </div>
+                                            </div>
+
+                                    </li>
+                            <li class="item146" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/media-site1"  >
+                <span>
+                                        Médias                                    </span>
+            </a>
+
+
+                    </li>
+                            <li class="item112" >
+
+            <a class="item" href="http://aidonsdenispoitras.com/index.php/nous-contacter"  >
+                <span>
+                                        Nous contacter                                    </span>
+            </a>
+
+
+                    </li>
+            </ul>	</div>
+
+</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+														</header>
+
+				<div class="clear"></div>
+			</div>
+		</div>
+				<div id="slideshow-spacer"></div>
+				<div id="rt-transition">
+			<div class="rt-container main-surround">
+								<div class="rt-body-top"><div class="left-top-pointer"></div><div class="right-top-pointer"></div></div>
+								<div id="rt-mainbody-surround">
+					<div class="gf-menu-device-container"></div>
+					<div class="rt-container">
+									    <div id="rt-drawer">
+				        <div class="rt-container">
+				            				            <div class="clear"></div>
+				        </div>
+				    </div>
+
+<div id="rt-main" class="mb8-sa4">
+    <div class="rt-grid-8 ">
+                		<div class="rt-block">
+            <div id="rt-mainbody">
+				<div class="component-content">
+                	<div class="blog dec12-home">
+
+
+
+
+
+
+
+
+<div class="items-leading">
+			<div class="leading-0">
+
+	<h2>
+					Campagne de financement			</h2>
+
+
+
+
+
+ <dl class="article-info">
+ <dt class="article-info-term">Détails</dt>
+		<dd class="blog-published">
+			<span class="rt-date-day rt-date-ribbon">05</span>
+			<span class="rt-date-month rt-date-ribbon">Aoû</span>
+		</dd>
+ 	</dl>
+<div class="angled">
+	<object height="360" width="640"><param name="movie" value="//youtu.be/sKYKW4lwEyY?hl=fr_FR&amp;version=3" /><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><embed allowfullscreen="true" allowscriptaccess="always" height="360" src="http://www.youtube.com/v/S-cyodtN1_Y?hl=fr_FR&amp;version=3" type="application/x-shockwave-flash" width="640"></embed></object></div>
+<p>
+	&nbsp;</p>
+<div class="clear">
+	&nbsp;</div>
+<h2>
+	<em>Aidons Denis Poitras à retrouver son droit de pratique!</em></h2>
+<p style="text-align: justify;">
+	«L’avocat des manifestant-es», Denis Poitras, infatigable défenseur des libertés civiles, du droit à la liberté d’expression et du droit d’association, ne peut plus défendre personne. Depuis le 17 juillet dernier, il s’est vu retirer son droit de pratique pour cause de faillite personnelle, une sanction administrative automatique du Barreau. Pour ceux et celles qui le connaissent, ainsi que pour les milliers de personnes qu’il a défendu depuis le début de sa pratique en 1991, la radiation de Denis est catastrophique&nbsp;: non seulement un avocat de talent, impliqué et engagé ne peut plus pratiquer, mais environ 1700 personnes perdent d’emblée leur avocat.</p>
+<p style="text-align: justify;">
+	Denis n’a jamais été motivé par l’appât du gain et a plutôt choisi de se dédier à sa pratique par conviction. Il a toujours aidé tous ceux et toutes celles qui en avaient besoin, très souvent de manière <em>pro bono</em>, sans changer d’honoraires. Une grande partie de sa pratique consiste également en des mandats privés d’aide juridique. Toutefois, depuis les coupures massives à l’aide juridique depuis les réformes de 1994 avec l’ère du «&nbsp;Déficit zéro&nbsp;», il est de plus en plus difficile d’avoir accès aux services de l’aide juridique et ainsi pouvoir bénéficier d’un avocat à peu ou pas de coût. En effet, selon les barèmes actuels –qui ont été gelés pendant entre 10 et 20 ans, tout dépendant des cas– une personne travaillant à temps plein au salaire minimum n’aura pas accès à l’aide juridique de manière gratuite. Un grave problème d’accès à la justice persiste donc et les avocats qui choisissent de se dédier à la défense des personnes les plus marginalisées et démunies se retrouvent ainsi dans des situations financières particulièrement précaire.</p>
+<p style="text-align: justify;">
+	Mais tout n’est pas joué : malgré les sommes dues, il est réaliste de penser que Denis puisse retrouver son droit de pratique dans d'ici quelques semaines,<u>si nous nous mobilisons dès aujourd’hui</u>. Empêcher Denis Poitras de pratiquer le droit ne fera que creuser davantage le fossé qui sépare les citoyens du système de justice. C’est dans cet esprit que nous faisons appel à votre solidarité! Nous vous invitons à soutenir la campagne en partageant un court message d’appui et en faisant un don, dans la mesure de vos capacités.</p>
+<p style="text-align: justify;">
+	Faisons-nous entendre! Revendiquons un meilleur accès à l’aide juridique, une hausse des barèmes d’admissibilité et une augmentation des tarifs pour les mandats privés!</p>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<div id="ckimgrsz" style="left: 8px; top: 8px;">
+	<div class="preview">
+		&nbsp;</div>
+</div>
+
+
+
+<div class="item-separator"></div>
+		</div>
+			</div>
+
+
+
+
+
+</div>
+
+				</div>
+            </div>
+		</div>
+                    </div>
+                <div class="rt-grid-4 ">
+                <div id="rt-sidebar-b">
+                               <div class="rt-block box3 nomarginbottom">
+           		<div class="module-surround">
+	           						<div class="module-title">
+	                	<h2 class="title">Donnez</h2>
+					</div>
+	            		            <div class="module-content">
+
+
+<div class="custombox3 nomarginbottom"  >
+	<p>
+	<a href="http://www.google.com/?q=Pourquoi+je+ne+devrais+pas+faire+confiance+%C3%A0+n'importe+quel+site+web"><img alt="" class="cke-resize cke-resize cke-resize" src="images/actupaypal.jpg" style="width: 300px; height: 134px;" /></a><img alt="" class="cke-resize" src="images/thermometer.png" style="width: 299px; height: 522px;" /></p>
+<p>
+	Mise à jour - 2013-08-05 12h43</p>
+<p>
+	&nbsp;</p>
+</div>
+		            </div>
+                </div>
+                                <div class="rt-box3-btm"></div>
+            	           </div>
+	           <div class="rt-block box5">
+           		<div class="module-surround">
+	           						<div class="module-title">
+	                	<h2 class="title">Actualités</h2>
+					</div>
+	            		            <div class="module-content">
+
+
+<div class="custombox5"  >
+	<p>
+	<span class="rt-image rt-floatleft">&nbsp;<img alt="" src="images/533675_10151652285417771_1364358497_n.jpg" style="width: 400px; height: 259px;" /></span></p>
+<div>
+	<small class="hidden-tablet">Spectacle bénifice pour Denis Poitras ; 14 septembre 2013, 20h aux Katacombes</small><small class="visible-tablet">. 1635, rue Saint-Laurent</small></div>
+</div>
+		            </div>
+                </div>
+                           </div>
+
+                </div>
+            </div>
+
+    <div class="clear"></div>
+</div>
+																				</div>
+				</div>
+				<div class="rt-body-btm"><div class="left-btm-pointer"></div><div class="right-btm-pointer"></div></div>
+			</div>
+		</div>
+				<footer id="rt-footer-surround" class="rt-dark">
+			<div class="rt-container">
+			<div class="rt-footer-bg"><div class="rt-footer-bg2">
+																<div id="rt-copyright">
+					<div class="rt-grid-10 rt-alpha">
+    	<div class="clear"></div>
+	<div class="rt-block">
+		<a href="http://www.rockettheme.com/" title="rockettheme.com" id="rocket"></a>
+		Création de Alexandre F. cloné par Antoine G.	</div>
+
+</div>
+<div class="rt-grid-2 rt-omega">
+    	<div class="clear"></div>
+	<div class="rt-block">
+		<a href="index.html#" id="gantry-totop" rel="nofollow">Haut</a>
+	</div>
+
+</div>
+					<div class="clear"></div>
+				</div>
+								<div class="clear"></div>
+			</div></div>
+			</div>
+		</footer>
+			</div></div>
+				</body>
+</html>
