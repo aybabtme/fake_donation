@@ -2,19 +2,53 @@ package main
 
 import (
 	"fmt"
+	"github.com/aybabtme/color"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"time"
 )
 
-func main() {
+var (
+	port       = "6363"
+	filePath   = "."
+	healthPath = "/ping"
+	logPath    = time.Now().UTC().Format(time.RFC3339) + "_site.log"
+)
 
-	port := 6363
-	servePath := "./"
-	logPath := time.Now().UTC().Format(time.RFC3339) + "_site.log"
+func healthHandler(l *log.Logger) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		l.Printf("Health check from %v: %#v\n", r.RemoteAddr, r.Header)
+
+	}
+}
+
+func fileHandler(l *log.Logger) func(http.ResponseWriter, *http.Request) {
+
+	fileServer := http.FileServer(http.Dir(filePath))
+
+	blue := color.LightBlue()
+	green := color.LightGreen()
+	cyan := color.Cyan()
+
+	return func(w http.ResponseWriter, r *http.Request) {
+		l.Printf("%s %v from %v: %#v\n",
+			blue.Get(r.Method),
+			green.Get(r.RequestURI),
+			cyan.Get(r.RemoteAddr),
+			r.Header)
+		fileServer.ServeHTTP(w, r)
+	}
+}
+
+func teeLogger(first io.Writer, second io.Writer) *log.Logger {
+	mulWriter := io.MultiWriter(first, second)
+	return log.New(mulWriter, "", log.LstdFlags)
+}
+
+func main() {
 
 	logFile, err := os.Create(logPath)
 	if err != nil {
@@ -22,18 +56,15 @@ func main() {
 		return
 	}
 	defer logFile.Close()
-	mulWriter := io.MultiWriter(logFile, os.Stdout)
 
-	logger := log.New(mulWriter, "", log.LstdFlags)
+	logger := teeLogger(logFile, os.Stdout)
 
-	for {
+	logger.Printf("Serving path '%s' on port %s, logging to '%s'\n", filePath, port, logPath)
 
-		logger.Printf("Serving path '%s' on port %d, logging to '%s'\n",
-			servePath, port, logPath)
+	http.HandleFunc(healthPath, healthHandler(logger))
+	http.HandleFunc("/", fileHandler(logger))
 
-		err := http.ListenAndServe(":"+strconv.Itoa(port), http.FileServer(http.Dir(servePath)))
-		if err != nil {
-			logger.Printf("Error serving files: %v\n", err)
-		}
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		logger.Fatalf("Error serving files: %v\n", err)
 	}
 }
