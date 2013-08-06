@@ -12,7 +12,7 @@ import (
 
 var (
 	port       = "6363"
-	filePath   = "."
+	filePath   = "public"
 	healthPath = "/ping"
 	logPath    = time.Now().UTC().Format(time.RFC3339) + "_site.log"
 )
