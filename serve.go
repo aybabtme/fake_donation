@@ -18,9 +18,10 @@ var (
 )
 
 func healthHandler(l *log.Logger) func(http.ResponseWriter, *http.Request) {
+	red := color.Red()
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		l.Printf("Health check from %v: %#v\n", r.RemoteAddr, r.Header)
+		l.Printf("Health check from %s: %#v\n", red.Get(r.RemoteAddr), r.Header)
 
 	}
 }
